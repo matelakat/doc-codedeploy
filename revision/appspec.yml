@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+
+files:
+    - source: files/sample.txt
+      destination: /some/app
+hooks:
+    ApplicationStop:
+        - location: scripts/application_stop.sh
+    BeforeInstall:
+        - location: scripts/before_install.sh
+    AfterInstall:
+        - location: scripts/after_install.sh
+    ApplicationStart:
+        - location: scripts/application_start.sh
+    ValidateService:
+        - location: scripts/validate_service.sh

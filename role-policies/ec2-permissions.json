@@ -8,7 +8,7 @@
         "s3:List*"
       ],
       "Resource": [
-        "arn:aws:s3:::CodeDeployDemoBucket/*",
+        "arn:aws:s3:::doc-codedeploy/*",
         "arn:aws:s3:::aws-codedeploy-us-east-1/*",
         "arn:aws:s3:::aws-codedeploy-us-west-2/*",
         "arn:aws:s3:::aws-codedeploy-eu-west-1/*",
