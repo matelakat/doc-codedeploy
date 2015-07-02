@@ -1,6 +1,11 @@
 #!/bin/bash
 set -x
 
+aws ec2 describe-instances | jq -r '.Reservations | .[] | .Instances | map(select(.State.Code == 16)) | map(select(.KeyName == "codedeploy")) |.[] | .InstanceId' |
+while read instance_id; do
+    aws ec2 terminate-instances --instance-ids $instance_id
+done
+
 aws ec2 delete-security-group --group-name ssh
 aws ec2 delete-key-pair --key-name codedeploy
 
