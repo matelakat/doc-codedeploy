@@ -39,4 +39,9 @@ aws ec2 run-instances \
     --count 1 \
     --instance-type t2.micro \
     --iam-instance-profile Name=code_deploy_instance_profile \
-    --security-groups ssh
+    --security-groups ssh > instance.json
+
+INSTANCE=$(cat instance.json | jq -r ' .Instances | .[] | .InstanceId')
+
+# Create a tag
+aws ec2 create-tags --tags Key=CodeDeployTag,Value=Demo --resources $INSTANCE
